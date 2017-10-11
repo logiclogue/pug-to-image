@@ -1,0 +1,24 @@
+{
+  "name": "pug-to-image",
+  "version": "1.0.0",
+  "description": "Converts pug templates to an image",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logiclogue/pug-to-image.git"
+  },
+  "keywords": [
+    "pug",
+    "image",
+    "phantom"
+  ],
+  "author": "Jordan Lord",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/logiclogue/pug-to-image/issues"
+  },
+  "homepage": "https://github.com/logiclogue/pug-to-image#readme"
+}

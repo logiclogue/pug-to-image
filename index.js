@@ -9,15 +9,10 @@ var phantom = require("phantom");
     page.property("viewportSize", { width: 600, height: 600 })
 
     const status = await page.open(address);
-    const content = await page.property("renderBuffer", "png", -1);
 
-    console.log("HERE");
+    var base64 = await page.renderBase64("PNG");
 
-    for (var method in page) {
-        console.log(method);
-    }
-
-    var buffer = page.renderBuffer("png", -1);
+    console.log(Buffer.from(base64, "base64"));
 
     phantom.exit(1);
 }());

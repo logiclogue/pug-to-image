@@ -1,20 +1,30 @@
 var pug = require("pug");
 var phantom = require("phantom");
 
-(async function () {
-    const instance = await phantom.create();
-    const page = await instance.createPage();
+(function () {
+    let page, status, instance, base64;
     const address = "http://github.com";
 
-    page.property("viewportSize", { width: 600, height: 600 })
+    phantom.create().then(function (_instance) {
+        instance = _instance;
 
-    const status = await page.open(address);
+        return instance.createPage();
+    }).then(function (_page) {
+        page = _page;
+        page.property("viewportSize", { width: 600, height: 600 });
 
-    var base64 = await page.renderBase64("PNG");
+        return page.open(address);
+    }).then(function (_status) {
+        status = _status;
 
-    console.log(Buffer.from(base64, "base64"));
+        return page.renderBase64("PNG");
+    }).then(function (_base64) {
+        base64 = _base64;
 
-    phantom.exit(1);
+        console.log(Buffer.from(base64, "base64"));
+
+        phantom.exit(1);
+    });
 }());
 
 // String -> Buffer

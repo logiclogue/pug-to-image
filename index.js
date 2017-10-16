@@ -26,9 +26,11 @@ function pugToImage(pugString) {
 
             resolve(Buffer.from(base64, "base64"));
 
-            phantom.exit(1);
+            instance.exit(0);
         }).catch(function (error) {
             reject(error);
+
+            instance.exit(1);
         });
     });
 }

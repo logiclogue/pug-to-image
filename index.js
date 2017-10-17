@@ -5,7 +5,7 @@ var Promise = require("promise");
 // String -> Promise
 function pugToImage(pugString) {
     let page, status, instance, base64;
-    const address = "http://github.com";
+    const address = "test.pug";
 
     return new Promise(function (resolve, reject) {
         phantom.create().then(function (_instance) {

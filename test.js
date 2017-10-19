@@ -8,7 +8,7 @@ describe("pugToImage()", function () {
         it("returns the correct buffer", function (done) {
             this.timeout(10000);
 
-            pugToImage("PNG", 100, 100, "http://github.com")
+            pugToImage("PNG", 100, 100, "test.pug")
             .then(function (buffer) {
                 var val = _.take(buffer, 3);
 
@@ -21,7 +21,7 @@ describe("pugToImage()", function () {
         it("writes to a file", function (done) {
             this.timeout(10000);
 
-            pugToImage("PNG", 100, 100, "http://github.com")
+            pugToImage("PNG", 100, 100, "test.pug")
             .then(function (buffer) {
                 fs.writeFile("test.png", buffer, function () {
                     done();

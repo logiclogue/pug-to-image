@@ -3,9 +3,10 @@ var phantom = require("phantom");
 var Promise = require("promise");
 
 // String -> Number -> Number -> String -> Promise
-function pugToImage(imageType, width, height, pugString) {
+function pugToImage(imageType, width, height, address) {
     let page, status, instance, base64;
-    const address = pugString;
+
+    var compiledFunction = pug.compileFile(address);
 
     return new Promise(function (resolve, reject) {
         phantom.create().then(function (_instance) {
@@ -15,10 +16,7 @@ function pugToImage(imageType, width, height, pugString) {
         }).then(function (_page) {
             page = _page;
             page.property("viewportSize", { width: width, height: height });
-
-            return page.open(address);
-        }).then(function (_status) {
-            status = _status;
+            page.property("content", compiledFunction({}));
 
             return page.renderBase64(imageType);
         }).then(function (_base64) {

@@ -1,4 +1,5 @@
 var pug = require("pug");
+var _ = require("lodash");
 var phantom = require("phantom");
 var Promise = require("promise");
 
@@ -33,4 +34,4 @@ function pugToImage(imageType, width, height, address) {
     });
 }
 
-module.exports = pugToImage;
+module.exports = _.curry(pugToImage);

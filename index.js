@@ -18,6 +18,7 @@ function pugToImage(imageType, width, height, address) {
             page = _page;
             page.property("viewportSize", { width: width, height: height });
             page.property("content", compiledFunction({}));
+            page.property("zoomFactor", 0.25);
 
             return page.renderBase64(imageType);
         }).then(function (_base64) {

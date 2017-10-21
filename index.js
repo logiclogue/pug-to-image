@@ -4,8 +4,8 @@ var phantom = require("phantom");
 var Promise = require("promise");
 
 // String -> Number -> Number -> String -> Promise
-function pugToImage(imageType, width, height, address) {
-    let page, status, instance, base64;
+function pugToImage(imageType, width, height, address, options) {
+    var page, status, instance, base64;
 
     var compiledFunction = pug.compileFile(address);
 
@@ -17,7 +17,7 @@ function pugToImage(imageType, width, height, address) {
         }).then(function (_page) {
             page = _page;
             page.property("viewportSize", { width: width, height: height });
-            page.property("content", compiledFunction({}));
+            page.property("content", compiledFunction(options));
             page.property("zoomFactor", 0.25);
 
             return page.renderBase64(imageType);

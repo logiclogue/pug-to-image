@@ -8,7 +8,7 @@ describe("pugToImage()", function () {
         let createImage;
 
         before(function () {
-            createImage = pugToImage("PNG", 100, 100, "test.pug");
+            createImage = pugToImage("PNG", 512, 512, "test.pug");
         });
 
         it("returns the correct buffer", function (done) {

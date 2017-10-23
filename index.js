@@ -7,7 +7,7 @@ var Promise = require("promise");
 function pugToImage(imageType, width, height, address, options) {
     var page, status, instance, base64;
 
-    var compiledFunction = pug.compileFile(address);
+    var html = pug.renderFile(address, options);
 
     return new Promise(function (resolve, reject) {
         phantom.create().then(function (_instance) {
@@ -17,7 +17,7 @@ function pugToImage(imageType, width, height, address, options) {
         }).then(function (_page) {
             page = _page;
             page.property("viewportSize", { width: width, height: height });
-            page.property("content", compiledFunction(options));
+            page.property("content", html);
 
             return page.property("onLoadFinished");
         }).then(function () {

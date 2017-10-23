@@ -19,6 +19,8 @@ function pugToImage(imageType, width, height, address, options) {
             page.property("viewportSize", { width: width, height: height });
             page.property("content", compiledFunction(options));
 
+            return page.property("onLoadFinished");
+        }).then(function () {
             return page.renderBase64(imageType);
         }).then(function (_base64) {
             base64 = _base64;

@@ -1,6 +1,6 @@
 {
   "name": "pug-to-image",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Converts pug templates to an image",
   "main": "index.js",
   "scripts": {
